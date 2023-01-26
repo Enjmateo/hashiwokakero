@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "client.image-creation.url",
+    "type": "java.lang.String",
+    "description": "A description for 'client.image-creation.url'"
+  },
+  {
+    "name": "client.solving.url",
+    "type": "java.lang.String",
+    "description": "A description for 'client.solving.url'"
+  },
+  {
+    "name": "client.slicing.url",
+    "type": "java.lang.String",
+    "description": "A description for 'client.slicing.url'"
+  },
+  {
+    "name": "upload.dir",
+    "type": "java.lang.String",
+    "description": "A description for 'upload.dir'"
+  },
+  {
+    "name": "solved.dir",
+    "type": "java.lang.String",
+    "description": "A description for 'solved.dir'"
+  },
+  {
+    "name": "client.recognition.url",
+    "type": "java.lang.String",
+    "description": "A description for 'client.recognition.url'"
+  },
+  {
+    "name": "image.extension",
+    "type": "java.lang.String",
+    "description": "A description for 'image.extension'"
+  },
+  {
+    "name": "client.solving-prob.url",
+    "type": "java.lang.String",
+    "description": "A description for 'client.solving-prob.url'"
+  }
+]}

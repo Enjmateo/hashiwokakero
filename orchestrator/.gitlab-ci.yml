@@ -1,0 +1,39 @@
+stages:
+  - Deploy
+  - Run
+
+prepare 1/3:
+  stage: Deploy
+  script:
+    - cp ./src/main/resources/application-prod.properties ./src/main/resources/application.properties 
+  artifacts:
+    paths:
+      - ./src/main/resources/application.properties
+
+build 2/3:
+  stage: Deploy
+  needs: 
+    - prepare 1/3
+  script:
+    - cat ./src/main/resources/application.properties
+    - ./mvnw clean package -DskipTests
+  artifacts:
+    paths:
+      - target/
+
+upload 3/3:
+  stage: Deploy
+  needs: 
+    - build 2/3
+  script:
+    - scp -o StrictHostKeyChecking=no ./target/hashiwokakero-0.0.1-SNAPSHOT.jar user@192.168.37.171:/home/user/runenv
+    
+run on VM:
+  stage : Run
+  script:
+    - curl -s --request POST 'http://192.168.37.171:50030/shutdown' || true
+    - sleep 5s
+    - ssh user@192.168.37.171 "cd /home/user/runenv; nohup java -jar hashiwokakero-0.0.1-SNAPSHOT.jar > hashiwokakero.log 2>&1 &"
+  when: manual
+  allow_failure : true
+

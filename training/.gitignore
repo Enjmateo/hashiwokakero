@@ -1,0 +1,5 @@
+# On ne garde pas les gros volumes de données : grilles initiales, images de grilles, labels
+grid-creation/Hashi_Puzzles/*
+grid-creation/Hashiwokakero_images/*
+grid-creation/Hashiwokakero_labels/*
+train-yolo/yolov5/datasets/*

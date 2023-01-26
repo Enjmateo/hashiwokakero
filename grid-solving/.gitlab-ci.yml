@@ -1,0 +1,17 @@
+stages:
+  - Deploy
+  - Run
+
+upload:
+  stage: Deploy
+  script:
+    - scp -r -o StrictHostKeyChecking=no ./* user@7.0.0.241:/home/user/runenv
+    
+run on VM:
+  stage : Run
+  script:
+    - sleep 5s
+    - ssh user@7.0.0.241 "cd /home/user/runenv/code; nohup python3.7 app.py > solving.log 2>&1 &"
+  when: manual
+  allow_failure : true
+
